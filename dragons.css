@@ -1,0 +1,793 @@
+@font-face {
+  font-family: "OCTA Principale";
+  src: url("TYPO/Principale.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OCTA Secondaire";
+  src: url("TYPO/Secondaire.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --black: #000000;
+  --olive: #8a887e;
+  --beige: #d1d0cb;
+  --off: #f4f4f1;
+  --white: #ffffff;
+  --muted: #6d6b63;
+  --line: rgba(0, 0, 0, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family:
+    "OCTA Secondaire",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  background: var(--off);
+  color: var(--black);
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--black);
+  color: var(--white);
+}
+
+/* Page */
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  padding: 128px 28px 28px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.background-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.055) 1px, transparent 1px);
+  background-size: 70px 70px;
+  mask-image: radial-gradient(circle at center, black, transparent 72%);
+  animation: gridMove 14s linear infinite;
+}
+
+.background-blur {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 999px;
+  background: rgba(138, 136, 126, 0.26);
+  filter: blur(80px);
+  top: 12%;
+  right: 8%;
+  z-index: 0;
+  animation: blurFloat 8s ease-in-out infinite alternate;
+}
+
+.noise {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.12;
+  background-image: radial-gradient(
+    rgba(0, 0, 0, 0.18) 0.7px,
+    transparent 0.7px
+  );
+  background-size: 4px 4px;
+  mix-blend-mode: multiply;
+}
+
+/* Header */
+
+.header {
+  position: fixed;
+  top: 22px;
+  left: 50%;
+  z-index: 10;
+  transform: translateX(-50%);
+  width: min(calc(100% - 44px), 1180px);
+  min-height: 68px;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(244, 244, 241, 0.84);
+  backdrop-filter: blur(18px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.back-button {
+  min-height: 42px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid var(--black);
+  background: var(--black);
+  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-size: 0.86rem;
+  font-weight: 900;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.back-button:hover {
+  transform: translateY(-2px);
+  background: transparent;
+  color: var(--black);
+  border-color: var(--line);
+}
+
+.header-logo {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+}
+
+.header-pill {
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+/* Layout */
+
+.content {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 1180px);
+  min-height: min(680px, calc(100vh - 160px));
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.text-panel,
+.visual-panel {
+  min-width: 0;
+  min-height: min(680px, calc(100vh - 160px));
+}
+
+/* Panel texte */
+
+.text-panel {
+  padding: clamp(34px, 5vw, 64px);
+  border-radius: 46px;
+  background: var(--black);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  position: relative;
+}
+
+.text-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 255, 255, 0.12),
+      transparent 26%
+    ),
+    linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.06));
+  pointer-events: none;
+}
+
+.label {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.74rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.label::before {
+  content: "";
+  width: 42px;
+  height: 1px;
+  background: currentColor;
+}
+
+h1 {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+  font-family: "OCTA Principale", "OCTA Secondaire", sans-serif;
+  font-size: clamp(4.2rem, 7.2vw, 7.8rem);
+  line-height: 0.78;
+  letter-spacing: -0.075em;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.intro {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: clamp(0.98rem, 1.25vw, 1.08rem);
+  line-height: 1.7;
+}
+
+.actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 36px;
+}
+
+/* Boutons */
+
+.btn {
+  min-height: 50px;
+  padding: 0 22px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 900;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.btn-primary {
+  background: var(--white);
+  color: var(--black);
+  border: 1px solid var(--white);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  background: transparent;
+  color: var(--white);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-3px);
+  background: var(--white);
+  color: var(--black);
+}
+
+/* Panel visuel */
+
+.visual-panel {
+  position: relative;
+  border-radius: 46px;
+  background: var(--beige);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+.visual-panel::before {
+  content: "";
+  position: absolute;
+  inset: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 34px;
+}
+
+.radar {
+  position: absolute;
+  width: min(72%, 520px);
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  animation: radarPulse 3s ease-in-out infinite;
+}
+
+.radar::before,
+.radar::after {
+  content: "";
+  position: absolute;
+  inset: 15%;
+  border-radius: inherit;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.radar::after {
+  inset: 30%;
+}
+
+.scanner {
+  position: absolute;
+  width: 2px;
+  height: 230px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.34));
+  transform-origin: bottom center;
+  animation: scanRotate 4s linear infinite;
+}
+
+/* Animation visuelle */
+
+.drone {
+  position: relative;
+  z-index: 3;
+  width: min(62%, 390px);
+  aspect-ratio: 1.45 / 1;
+  animation: droneFloat 3.8s ease-in-out infinite;
+}
+
+.drone-body {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 150px;
+  height: 74px;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: var(--black);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.18);
+}
+
+.drone-body::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 54px;
+  height: 28px;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: var(--olive);
+}
+
+.arm {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 310px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--black);
+  transform: translate(-50%, -50%);
+}
+
+.arm.vertical {
+  width: 8px;
+  height: 210px;
+}
+
+.propeller {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+}
+
+.propeller::before {
+  content: "";
+  position: absolute;
+  width: 92px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--black);
+  animation: propellerSpin 0.18s linear infinite;
+}
+
+.propeller::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 92px;
+  border-radius: 999px;
+  background: var(--black);
+  animation: propellerSpin 0.18s linear infinite;
+}
+
+.propeller span {
+  position: relative;
+  z-index: 2;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--olive);
+  border: 4px solid var(--black);
+}
+
+.p1 {
+  top: 14px;
+  left: 18px;
+}
+
+.p2 {
+  top: 14px;
+  right: 18px;
+}
+
+.p3 {
+  bottom: 14px;
+  left: 18px;
+}
+
+.p4 {
+  bottom: 14px;
+  right: 18px;
+}
+
+.shadow {
+  position: absolute;
+  z-index: 2;
+  bottom: 116px;
+  width: 240px;
+  height: 30px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.16);
+  filter: blur(16px);
+  animation: shadowFloat 3.8s ease-in-out infinite;
+}
+
+/* Carte statut */
+
+.status-card {
+  position: absolute;
+  left: 30px;
+  bottom: 30px;
+  right: 30px;
+  z-index: 4;
+  min-height: 86px;
+  padding: 18px 20px;
+  border-radius: 28px;
+  background: rgba(244, 244, 241, 0.76);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.status-card span {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.status-card strong {
+  display: block;
+  margin-top: 4px;
+  font-family: "OCTA Principale", "OCTA Secondaire", sans-serif;
+  font-size: clamp(1.9rem, 4vw, 3.2rem);
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+}
+
+.loading-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.loading-dots i {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--black);
+  animation: dotBounce 1s ease-in-out infinite;
+}
+
+.loading-dots i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.loading-dots i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+/* Animations */
+
+@keyframes gridMove {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 70px 70px;
+  }
+}
+
+@keyframes blurFloat {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(-80px, 60px, 0) scale(1.15);
+  }
+}
+
+@keyframes droneFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+
+  50% {
+    transform: translateY(-18px) rotate(1.5deg);
+  }
+}
+
+@keyframes shadowFloat {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.18;
+  }
+
+  50% {
+    transform: scale(0.82);
+    opacity: 0.1;
+  }
+}
+
+@keyframes propellerSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes radarPulse {
+  0%,
+  100% {
+    transform: scale(0.96);
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: scale(1.04);
+    opacity: 0.9;
+  }
+}
+
+@keyframes scanRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dotBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: translateY(-8px);
+    opacity: 1;
+  }
+}
+
+/* Responsive tablette */
+
+@media (max-width: 980px) {
+  .page {
+    padding: 110px 18px 28px;
+    align-items: start;
+    overflow: visible;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .text-panel,
+  .visual-panel {
+    min-height: 560px;
+    border-radius: 34px;
+  }
+
+  h1 {
+    font-size: clamp(4.4rem, 15vw, 8rem);
+  }
+
+  .header {
+    top: 14px;
+    width: min(calc(100% - 28px), 1180px);
+  }
+
+  .header-pill {
+    display: none;
+  }
+}
+
+/* Responsive téléphone */
+
+@media (max-width: 620px) {
+  .page {
+    padding: 96px 12px 18px;
+  }
+
+  .header {
+    min-height: 60px;
+    padding: 10px 12px;
+  }
+
+  .header-left {
+    gap: 10px;
+  }
+
+  .back-button {
+    min-height: 38px;
+    padding: 0 14px;
+    font-size: 0.78rem;
+  }
+
+  .header-logo {
+    height: 38px;
+  }
+
+  .text-panel,
+  .visual-panel {
+    min-height: 500px;
+    border-radius: 28px;
+  }
+
+  .text-panel {
+    padding: 28px;
+  }
+
+  h1 {
+    font-size: clamp(3.9rem, 17vw, 5.6rem);
+    letter-spacing: -0.065em;
+  }
+
+  .intro {
+    font-size: 0.95rem;
+  }
+
+  .actions {
+    display: grid;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .radar {
+    width: 360px;
+  }
+
+  .scanner {
+    height: 180px;
+  }
+
+  .drone {
+    width: min(84%, 310px);
+  }
+
+  .drone-body {
+    width: 118px;
+    height: 58px;
+  }
+
+  .arm {
+    width: 240px;
+    height: 7px;
+  }
+
+  .arm.vertical {
+    width: 7px;
+    height: 160px;
+  }
+
+  .propeller {
+    width: 78px;
+    height: 78px;
+  }
+
+  .propeller::before {
+    width: 72px;
+    height: 14px;
+  }
+
+  .propeller::after {
+    width: 14px;
+    height: 72px;
+  }
+
+  .shadow {
+    bottom: 112px;
+    width: 200px;
+  }
+
+  .status-card {
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+    border-radius: 22px;
+  }
+}

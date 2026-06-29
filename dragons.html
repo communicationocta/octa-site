@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>OCTA — Dragons de Rouen</title>
+
+    <meta
+      name="description"
+      content="La page Dragons de Rouen OCTA est actuellement en cours de création."
+    />
+
+    <link rel="icon" type="image/png" href="IMG/LOGO/OCTA3.png" />
+    <link rel="stylesheet" href="dragons.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="header-left">
+        <a
+          href="graphisme.html#portfolio"
+          class="back-button"
+          onclick="
+            event.preventDefault();
+            if (document.referrer) {
+              history.back();
+            } else {
+              window.location.href = 'graphisme.html#portfolio';
+            }
+          "
+          aria-label="Retour à la page précédente"
+        >
+          ← Retour
+        </a>
+
+        <a href="index.html#top" aria-label="Retour à l'accueil OCTA">
+          <img
+            src="IMG/LOGO/OCTA NOIR.png"
+            alt="Logo OCTA"
+            class="header-logo"
+          />
+        </a>
+      </div>
+
+      <span class="header-pill">Page en préparation</span>
+    </header>
+
+    <main class="page">
+      <div class="background-grid"></div>
+      <div class="background-blur"></div>
+      <div class="noise"></div>
+
+      <section class="content">
+        <div class="text-panel">
+          <p class="label">Dragons de Rouen · OCTA</p>
+
+          <h1>
+            Page<br />
+            en travaux
+          </h1>
+
+          <p class="intro">
+            La page dédiée au projet des Dragons de Rouen est actuellement en
+            cours de création. Elle arrive bientôt avec des contenus visuels,
+            des exemples de réalisations et une présentation complète du projet.
+          </p>
+
+          <div class="actions">
+            <a href="index.html#top" class="btn btn-primary">
+              Retour à l’accueil
+            </a>
+
+            <a
+              href="mailto:communicationocta@gmail.com"
+              class="btn btn-secondary"
+            >
+              Nous contacter
+            </a>
+          </div>
+        </div>
+
+        <div class="visual-panel" aria-hidden="true">
+          <div class="radar"></div>
+          <div class="scanner"></div>
+
+          <div class="drone">
+            <div class="arm"></div>
+            <div class="arm vertical"></div>
+
+            <div class="propeller p1"><span></span></div>
+            <div class="propeller p2"><span></span></div>
+            <div class="propeller p3"><span></span></div>
+            <div class="propeller p4"><span></span></div>
+
+            <div class="drone-body"></div>
+          </div>
+
+          <div class="shadow"></div>
+
+          <div class="status-card">
+            <div>
+              <span>Statut</span>
+              <strong>En cours</strong>
+            </div>
+
+            <div class="loading-dots">
+              <i></i>
+              <i></i>
+              <i></i>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

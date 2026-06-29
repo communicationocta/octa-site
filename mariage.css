@@ -1,0 +1,444 @@
+/* =========================
+   PAGE MARIAGE — OCTA
+   ========================= */
+
+/* Hero */
+
+.mariage-hero {
+  min-height: 100vh;
+  padding: 150px 0 80px;
+  display: grid;
+  align-items: center;
+}
+
+.mariage-hero-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.mariage-hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.back-link {
+  display: inline-flex;
+  margin-bottom: 28px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: var(--text);
+}
+
+.mariage-hero h1 {
+  font-size: clamp(3rem, 8vw, 7rem);
+  max-width: 900px;
+}
+
+.mariage-intro {
+  color: var(--muted);
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  line-height: 1.6;
+  max-width: 620px;
+  margin-top: 26px;
+}
+
+.mariage-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 34px;
+}
+
+/* Image principale */
+
+.mariage-hero-frame {
+  position: relative;
+  height: 520px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--card);
+}
+
+.mariage-hero-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.82), transparent 58%);
+}
+
+.mariage-hero-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: contrast(1.05);
+  opacity: 0.95;
+  transition: transform 0.7s ease;
+}
+
+.mariage-hero-frame:hover img {
+  transform: scale(1.04);
+}
+
+.mariage-hero-label {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2;
+  padding: 20px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(18px);
+}
+
+.mariage-hero-label span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 8px;
+}
+
+.mariage-hero-label strong {
+  display: block;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  letter-spacing: -0.06em;
+  line-height: 0.95;
+}
+
+/* Cartes intro */
+
+.mariage-introduction {
+  padding-top: 40px;
+}
+
+.mariage-intro-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.mariage-intro-card {
+  min-height: 260px;
+  padding: 24px;
+  border-radius: var(--radius);
+  background: var(--card);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.mariage-intro-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 255, 255, 0.38);
+  background: rgba(30, 30, 30, 0.92);
+}
+
+.mariage-intro-card span {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 900;
+}
+
+.mariage-intro-card h2 {
+  font-size: clamp(2.2rem, 4vw, 3.8rem);
+}
+
+.mariage-intro-card p {
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 0.96rem;
+}
+
+/* Galerie photo */
+
+.mariage-gallery-section {
+  padding-top: 80px;
+}
+
+.mariage-gallery-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 30px;
+  margin-bottom: 46px;
+}
+
+.mariage-gallery-head h2 {
+  font-size: clamp(2.8rem, 6vw, 5.6rem);
+  max-width: 850px;
+}
+
+.mariage-gallery-head p {
+  max-width: 430px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.mariage-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.mariage-photo-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  height: auto;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--card);
+  isolation: isolate;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.mariage-photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: none;
+  opacity: 1;
+  user-select: none;
+  -webkit-user-drag: none;
+  transition:
+    transform 0.55s ease,
+    opacity 0.55s ease;
+}
+
+.mariage-photo-card:hover img {
+  transform: scale(1.06);
+  opacity: 1;
+}
+
+.mariage-photo-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.18), transparent 55%);
+  pointer-events: none;
+}
+
+/* Vidéos */
+
+.mariage-video-section {
+  padding-top: 80px;
+}
+
+.mariage-video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.mariage-video-card {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--card);
+  cursor: pointer;
+}
+
+.mariage-video-card video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  object-fit: cover;
+  background: #000;
+
+  filter: grayscale(100%);
+  opacity: 0.82;
+
+  transition:
+    filter 0.45s ease,
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+.mariage-video-card:hover video {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+/* Petit voile sombre sur la vidéo */
+
+.mariage-video-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.22), transparent 60%);
+  transition: opacity 0.35s ease;
+}
+
+.mariage-video-card:hover::after {
+  opacity: 0;
+}
+
+/* CTA */
+
+.mariage-cta {
+  padding: 60px 0 90px;
+}
+
+.mariage-cta-inner {
+  min-height: 360px;
+  border-radius: 32px;
+  background: var(--text);
+  color: var(--bg);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: clamp(28px, 5vw, 56px);
+}
+
+.mariage-cta-inner .eyebrow {
+  color: rgba(0, 0, 0, 0.55);
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.mariage-cta-inner .eyebrow::before {
+  display: none;
+}
+
+.mariage-cta-inner h2 {
+  font-size: clamp(2.6rem, 6vw, 5.2rem);
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.mariage-cta-inner p {
+  max-width: 560px;
+  color: rgba(0, 0, 0, 0.62);
+  line-height: 1.55;
+  margin: 22px auto;
+  font-size: 1rem;
+}
+
+.mariage-cta-inner .btn {
+  background: var(--bg);
+  color: var(--text);
+  border-color: var(--bg);
+}
+
+.mariage-cta-inner .btn:hover {
+  background: transparent;
+  color: var(--bg);
+}
+
+/* Responsive tablette */
+
+@media (max-width: 980px) {
+  .mariage-hero-grid {
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+
+  .mariage-hero-frame {
+    height: 460px;
+  }
+
+  .mariage-intro-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mariage-gallery-head {
+    display: grid;
+  }
+
+  .mariage-photo-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .mariage-video-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Responsive téléphone */
+
+@media (max-width: 650px) {
+  .mariage-hero {
+    padding: 125px 0 50px;
+  }
+
+  .mariage-hero h1 {
+    font-size: clamp(2.8rem, 14vw, 4.8rem);
+  }
+
+  .mariage-actions {
+    display: grid;
+  }
+
+  .mariage-hero-frame {
+    height: 360px;
+  }
+
+  .mariage-hero-label {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    padding: 16px;
+  }
+
+  .mariage-photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .mariage-photo-card {
+    aspect-ratio: 4 / 5;
+    border-radius: 18px;
+  }
+
+  .mariage-video-card {
+    border-radius: 18px;
+  }
+
+  .mariage-cta {
+    padding: 50px 0 70px;
+  }
+
+  .mariage-cta-inner {
+    min-height: 320px;
+    border-radius: 24px;
+  }
+
+  .mariage-cta-inner h2 {
+    font-size: clamp(2.2rem, 10vw, 3.8rem);
+  }
+
+  .mariage-cta-inner p {
+    font-size: 0.95rem;
+    margin: 18px auto;
+  }
+}
