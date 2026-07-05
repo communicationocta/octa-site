@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>OCTA — Vidéos drone</title>
+
+    <meta
+      name="description"
+      content="Découvrez les réalisations vidéo et drone d’OCTA : captations aériennes, contenus immersifs, vidéos événementielles et productions visuelles professionnelles."
+    />
+
+    <link rel="icon" type="image/png" href="IMG/LOGO/OCTA3.png" />
+    <link rel="stylesheet" href="drone.css" />
+  </head>
+
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <div class="glow" aria-hidden="true"></div>
+
+    <header class="header" id="header">
+      <div class="container nav">
+        <a href="index.html" class="logo" aria-label="Accueil OCTA">
+          <img src="IMG/LOGO/OCTA.png" alt="Logo OCTA" class="logo-img" />
+        </a>
+
+        <nav class="desktop-links" aria-label="Navigation principale">
+          <a href="index.html#services">Services</a>
+          <a href="index.html#realisations">Réalisations</a>
+          <a href="index.html#confiance">Confiance</a>
+          <a href="index.html#methode">Méthode</a>
+          <a href="index.html#equipe">Équipe</a>
+        </nav>
+
+        <a href="index.html#contact" class="btn">Contact</a>
+
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          type="button"
+          aria-expanded="false"
+        >
+          Menu
+        </button>
+      </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <nav aria-label="Navigation mobile">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#realisations">Réalisations</a>
+        <a href="index.html#confiance">Confiance</a>
+        <a href="index.html#methode">Méthode</a>
+        <a href="index.html#equipe">Équipe</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+
+    <main>
+      <section class="video-section" id="videos">
+        <div class="container">
+          <div class="video-carousel reveal">
+            <button
+              class="carousel-arrow carousel-prev"
+              id="prevVideo"
+              type="button"
+              aria-label="Vidéo précédente"
+            >
+              ‹
+            </button>
+
+            <div class="carousel-window">
+              <article class="video-slide active">
+                <video
+                  controls
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  poster="IMG/DRONE/DRONE.JPG"
+                >
+                  <source src="IMG/DRONE/1.mp4" type="video/mp4" />
+                  Votre navigateur ne supporte pas la vidéo.
+                </video>
+
+                <div class="slide-content">
+                  <span class="tag">Drone</span>
+                  <h1>Faites décoller vos souvenirs</h1>
+                  <p>
+                    Des plans larges et des vues aériennes pour valoriser un
+                    lieu, une architecture ou un environnement.
+                  </p>
+                </div>
+              </article>
+
+              <article class="video-slide">
+                <video
+                  controls
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  poster="IMG/DRONE/DRONE2.JPG"
+                >
+                  <source src="IMG/DRONE/2.mp4" type="video/mp4" />
+                  Votre navigateur ne supporte pas la vidéo.
+                </video>
+
+                <div class="slide-content">
+                  <span class="tag">Cinématique</span>
+                  <h2>Évasion</h2>
+                  <p>
+                    Des images aériennes élégantes pour sublimer un paysage, une
+                    architecture ou une expérience touristique.
+                  </p>
+                </div>
+              </article>
+
+              <article class="video-slide">
+                <video
+                  controls
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  poster="IMG/DRONE/HOCKEY.JPG"
+                >
+                  <source src="IMG/DRONE/3.mp4" type="video/mp4" />
+                  Votre navigateur ne supporte pas la vidéo.
+                </video>
+
+                <div class="slide-content">
+                  <span class="tag">Réseaux sociaux</span>
+                  <h2>Teaser</h2>
+                  <p>
+                    Mettez en lumière vos événements grâce à des images
+                    captivantes, conçues pour marquer votre audience.
+                  </p>
+                </div>
+              </article>
+
+              <article class="video-slide">
+                <video
+                  controls
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  poster="IMG/DRONE/DJI.JPG"
+                >
+                  <source src="IMG/DRONE/4.mov" type="video/mp4" />
+                  Votre navigateur ne supporte pas la vidéo.
+                </video>
+
+                <div class="slide-content">
+                  <span class="tag">Publicité</span>
+                  <h2>Donnez de l’impact</h2>
+                  <p>
+                    Des vidéos publicitaires pensées pour valoriser votre
+                    marque, présenter une offre et capter l’attention de votre
+                    audience dès les premières secondes.
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <button
+              class="carousel-arrow carousel-next"
+              id="nextVideo"
+              type="button"
+              aria-label="Vidéo suivante"
+            ></button>
+          </div>
+
+          <div class="carousel-bottom reveal">
+            <div class="carousel-count">
+              <span id="currentVideo">01</span>
+              <span>/</span>
+              <span id="totalVideos">04</span>
+            </div>
+
+            <div
+              class="carousel-dots"
+              id="carouselDots"
+              aria-label="Navigation vidéos"
+            ></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="height-section">
+        <div class="container">
+          <div class="height-heading reveal">
+            <p class="eyebrow">Drone · Captation aérienne · Vidéo</p>
+
+            <h2>Prenez de la hauteur sur vos projets</h2>
+
+            <p>
+              Des images aériennes pensées pour révéler un lieu, donner du
+              rythme à vos contenus et apporter une vraie dimension visuelle à
+              votre communication.
+            </p>
+          </div>
+
+          <div class="height-videos">
+            <article class="height-video-card reveal">
+              <video
+                controls
+                muted
+                playsinline
+                preload="metadata"
+                poster="IMG/DRONE/DJI.JPG"
+              >
+                <source src="IMG/DRONE/DRONE.mov" type="video/mp4" />
+                Votre navigateur ne supporte pas la vidéo.
+              </video>
+
+              <div class="height-video-content">
+                <span class="tag">Publicité</span>
+                <h3>DJI</h3>
+              </div>
+            </article>
+
+            <article class="height-video-card reveal">
+              <video
+                controls
+                muted
+                playsinline
+                preload="metadata"
+                poster="IMG/DRONE/HOCKEY.JPG"
+              >
+                <source src="IMG/DRONE/HOCKEY.mp4" type="video/mp4" />
+                Votre navigateur ne supporte pas la vidéo.
+              </video>
+
+              <div class="height-video-content">
+                <span class="tag">Teaser</span>
+                <h3>Dragons de Rouen</h3>
+              </div>
+            </article>
+
+            <article class="height-video-card reveal">
+              <video
+                controls
+                muted
+                playsinline
+                preload="metadata"
+                poster="IMG/DRONE/BASKET.JPG"
+              >
+                <source src="IMG/DRONE/BASKET.mp4" type="video/mp4" />
+                Votre navigateur ne supporte pas la vidéo.
+              </video>
+
+              <div class="height-video-content">
+                <span class="tag">Fictive</span>
+                <h3>Publicité</h3>
+              </div>
+            </article>
+
+            <article class="height-video-card reveal">
+              <video
+                controls
+                muted
+                playsinline
+                preload="metadata"
+                poster="IMG/DRONE/MARIAGE.jpg"
+              >
+                <source src="IMG/DRONE/MARIAGE.mp4" type="video/mp4" />
+                Votre navigateur ne supporte pas la vidéo.
+              </video>
+
+              <div class="height-video-content">
+                <span class="tag">Émotion</span>
+                <h3>Mariage</h3>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="drone-cta">
+        <div class="container reveal">
+          <p class="eyebrow">Projet vidéo</p>
+
+          <h2>Une vidéo drone pour votre prochain projet ?</h2>
+
+          <p>
+            OCTA vous accompagne dans la création de contenus vidéo modernes,
+            lisibles et adaptés à vos supports : site web, réseaux sociaux,
+            présentation, événement ou communication professionnelle.
+          </p>
+
+          <a
+            class="btn"
+            href="mailto:communicationocta@gmail.com?subject=Demande%20de%20vid%C3%A9o%20drone%20OCTA"
+          >
+            communicationocta@gmail.com
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <span>© 2026 OCTA — Vidéo, drone, photo & communication</span>
+        <span>Rouen · Normandie · France</span>
+      </div>
+    </footer>
+
+    <script>
+      const header = document.querySelector("#header");
+      const menuBtn = document.querySelector("#menuBtn");
+      const mobileMenu = document.querySelector("#mobileMenu");
+      const menuLinks = mobileMenu.querySelectorAll("a");
+      const revealElements = document.querySelectorAll(".reveal");
+
+      const slides = document.querySelectorAll(".video-slide");
+      const prevBtn = document.querySelector("#prevVideo");
+      const nextBtn = document.querySelector("#nextVideo");
+      const currentVideo = document.querySelector("#currentVideo");
+      const totalVideos = document.querySelector("#totalVideos");
+      const carouselDots = document.querySelector("#carouselDots");
+
+      let activeSlide = 0;
+
+      window.addEventListener("scroll", () => {
+        header.classList.toggle("scrolled", window.scrollY > 18);
+      });
+
+      function toggleMenu() {
+        const isOpen = mobileMenu.classList.toggle("open");
+
+        document.body.classList.toggle("menu-open", isOpen);
+        menuBtn.setAttribute("aria-expanded", isOpen);
+        mobileMenu.setAttribute("aria-hidden", !isOpen);
+        menuBtn.textContent = isOpen ? "Fermer" : "Menu";
+      }
+
+      menuBtn.addEventListener("click", toggleMenu);
+
+      menuLinks.forEach((link) => {
+        link.addEventListener("click", toggleMenu);
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.14 },
+      );
+
+      revealElements.forEach((el) => observer.observe(el));
+
+      function formatNumber(number) {
+        return String(number).padStart(2, "0");
+      }
+
+      function pauseAllVideos() {
+        slides.forEach((slide) => {
+          const video = slide.querySelector("video");
+
+          if (video) {
+            video.pause();
+          }
+
+          slide.classList.remove("video-started");
+        });
+      }
+
+      function playActiveVideo() {
+        const activeVideo = slides[activeSlide].querySelector("video");
+        const activeSlideElement = slides[activeSlide];
+
+        if (activeVideo) {
+          activeVideo.currentTime = 0;
+
+          activeVideo
+            .play()
+            .then(() => {
+              activeSlideElement.classList.add("video-started");
+            })
+            .catch(() => {
+              console.log("Lecture automatique bloquée par le navigateur.");
+            });
+        }
+      }
+
+      function updateCarousel(index) {
+        pauseAllVideos();
+
+        slides.forEach((slide, slideIndex) => {
+          slide.classList.toggle("active", slideIndex === index);
+        });
+
+        const dots = document.querySelectorAll(".carousel-dot");
+
+        dots.forEach((dot, dotIndex) => {
+          dot.classList.toggle("active", dotIndex === index);
+        });
+
+        currentVideo.textContent = formatNumber(index + 1);
+        playActiveVideo();
+      }
+
+      function nextSlide() {
+        activeSlide = (activeSlide + 1) % slides.length;
+        updateCarousel(activeSlide);
+      }
+
+      function prevSlide() {
+        activeSlide = (activeSlide - 1 + slides.length) % slides.length;
+        updateCarousel(activeSlide);
+      }
+
+      slides.forEach((slide, index) => {
+        const dot = document.createElement("button");
+        dot.classList.add("carousel-dot");
+        dot.type = "button";
+        dot.setAttribute("aria-label", `Voir la vidéo ${index + 1}`);
+
+        if (index === 0) {
+          dot.classList.add("active");
+        }
+
+        dot.addEventListener("click", () => {
+          activeSlide = index;
+          updateCarousel(activeSlide);
+        });
+
+        carouselDots.appendChild(dot);
+      });
+
+      totalVideos.textContent = formatNumber(slides.length);
+      currentVideo.textContent = formatNumber(activeSlide + 1);
+
+      nextBtn.addEventListener("click", nextSlide);
+      prevBtn.addEventListener("click", prevSlide);
+
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowRight") {
+          nextSlide();
+        }
+
+        if (event.key === "ArrowLeft") {
+          prevSlide();
+        }
+      });
+
+      const allVideos = document.querySelectorAll("video");
+
+      allVideos.forEach((video) => {
+        video.addEventListener("play", () => {
+          const parent = video.closest(".video-slide, .height-video-card");
+
+          if (parent) {
+            parent.classList.add("video-started");
+          }
+        });
+      });
+
+      window.addEventListener("load", () => {
+        playActiveVideo();
+      });
+    </script>
+  </body>
+</html>
